@@ -15,7 +15,7 @@ function createUser($username, $password)
 		return false;
 	}
 
-	$sql = "INSERT INTO User(username,password) VALUES(:username, :password)";
+	$sql = "INSERT INTO user(username,password) VALUES(:username, :password)";
 	$stmt = $db->prepare($sql);
 	$stmt->bindParam(':username', $username, PDO::PARAM_STR);
 	$stmt->bindParam(':password', $password, PDO::PARAM_STR);
@@ -76,7 +76,7 @@ function getAllUsers() {
 function getUserById($id_user) {
 	$db_users = new PDO('sqlite:Database/users.db');
 
-	$sql = "Select * from Users WHERE id=:id_user";
+	$sql = "Select * from users WHERE id=:id_user";
 	$stmt = $db_users->prepare($sql);
 	$stmt->bindParam('id_user',$id_user, PDO::PARAM_STR);
 	
